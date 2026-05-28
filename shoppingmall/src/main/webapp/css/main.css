@@ -556,20 +556,36 @@ body.login-page {
     margin-bottom: 8px;
 }
 .form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input:not([type]) {
     width: 100%;
     padding: 14px 18px;
     border: 2px solid #dfe6e9;
     border-radius: 10px;
     font-size: 14px;
-    transition: border-color 0.2s;
+    font-family: inherit;
+    color: #2d3436;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
     outline: none;
     background: #fafafa;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .form-group input[type="text"]:focus,
-.form-group input[type="password"]:focus {
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input:not([type]):focus {
     border-color: #ff6b6b;
     background: #fff;
+    box-shadow: none;
+}
+/* 브라우저 기본 :invalid 빨간 박스섀도우 제거 (Firefox 등) */
+.form-group input:invalid,
+.form-group input:required {
+    box-shadow: none;
 }
 .form-group input::placeholder { color: #b2bec3; }
 
