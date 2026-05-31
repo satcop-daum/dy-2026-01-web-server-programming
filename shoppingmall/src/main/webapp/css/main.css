@@ -248,6 +248,38 @@ section { margin: 80px 0; }
     font-size: 13px;
 }
 .section-head a:hover { color: #2d3436; }
+.product-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.product-sort {
+    min-width: 132px;
+    padding: 10px 36px 10px 14px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    background: #fff;
+    color: #2d3436;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+.product-sort:focus {
+    border-color: #ff6b6b;
+}
+.product-empty {
+    background: #fff;
+    border: 1px dashed #dfe6e9;
+    border-radius: 12px;
+    padding: 42px 20px;
+    margin-bottom: 28px;
+    color: #636e72;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
 
 /* ===== 카테고리 ===== */
 .category-grid {
@@ -259,8 +291,13 @@ section { margin: 80px 0; }
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
+    outline: none;
 }
 .cat-item:hover { transform: translateY(-4px); }
+.cat-item.active .cat-circle,
+.cat-item:focus-visible .cat-circle {
+    box-shadow: 0 0 0 3px rgba(255,107,107,0.24), 0 8px 16px rgba(0,0,0,0.08);
+}
 .cat-circle {
     width: 100%;
     aspect-ratio: 1;
