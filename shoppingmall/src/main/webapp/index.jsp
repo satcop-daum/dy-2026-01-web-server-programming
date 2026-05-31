@@ -84,7 +84,10 @@
             <button aria-label="검색">Q</button>
         </div>
         <div class="header-icons">
-            <div class="icon-btn"><div class="icon">♥</div>찜</div>
+            <div class="icon-btn">
+                <div class="icon">♥</div>찜
+                <span id="wishlistBadge" class="badge wishlist-badge" hidden>0</span>
+            </div>
             <div class="icon-btn">
                 <div class="icon">🛒</div>장바구니
                 <span class="badge">3</span>
@@ -138,7 +141,7 @@
         </div>
         <div class="category-grid">
             <% for (String[] cat : categoryIcons) { %>
-                <div class="cat-item">
+                <div class="cat-item" role="button" tabindex="0" data-category-name="<%= cat[1] %>">
                     <div class="cat-circle">
                         <img src="<%= IMG %><%= cat[2] %>/200/200" alt="<%= cat[1] %>">
                         <div class="cat-label"><%= cat[0] %></div>
@@ -156,8 +159,18 @@
                 <h2>BEST 상품</h2>
                 <div class="sub">지금 가장 인기있는 상품을 만나보세요</div>
             </div>
-            <a href="#">전체보기 →</a>
+            <div class="product-toolbar">
+                <label for="productSort" class="sr-only">상품 정렬</label>
+                <select id="productSort" class="product-sort">
+                    <option value="default">기본순</option>
+                    <option value="price-low">가격 낮은순</option>
+                    <option value="price-high">가격 높은순</option>
+                    <option value="rate-high">평점 높은순</option>
+                </select>
+                <a href="#">전체보기 →</a>
+            </div>
         </div>
+        <div id="productEmptyMessage" class="product-empty" hidden>검색 결과가 없습니다</div>
         <div class="product-grid">
             <% for (int i = 0; i < bestProducts.length; i++) {
                 Object[] p = bestProducts[i];
@@ -336,5 +349,6 @@
     </div>
 </footer>
 
+<script src="/js/shop.js"></script>
 </body>
 </html>
