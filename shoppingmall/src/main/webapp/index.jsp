@@ -52,7 +52,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SHOP MALL - 당신의 라이프 스타일</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
@@ -84,10 +84,13 @@
             <button aria-label="검색">Q</button>
         </div>
         <div class="header-icons">
-            <div class="icon-btn">
+            <!--수정-->
+            <a href="wishlist.jsp" class="icon-btn">
                 <div class="icon">♥</div>찜
-                <span id="wishlistBadge" class="badge wishlist-badge" hidden>0</span>
-            </div>
+                <span id="wishlistBadge"
+                      class="badge wishlist-badge"
+                      hidden>0</span>
+            </a>
             <a href="/cart/cart.jsp" class="icon-btn cart-link">
                 <div class="icon">🛒</div>장바구니
                 <span id="cartBadge" class="badge cart-badge" hidden>0</span>
@@ -351,6 +354,6 @@
     </div>
 </footer>
 
-<script src="/js/shop.js"></script>
+<script src="js/shop.js"></script>
 </body>
 </html>
