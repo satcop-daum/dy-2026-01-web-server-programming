@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="kr.ac.dy.cs.util.SessionUtils" %>
 <%
+    // TODO: Refactor Mock Data to DB Table Read Task
     // ===== 샘플 데이터 =====
     String[] categories = {"전체", "여성의류", "남성의류", "신발", "가방", "액세서리", "뷰티", "디지털"};
 
