@@ -16,9 +16,9 @@ public class MemberService {
      */
     public boolean isLogin(String userId, String password) {
 
+        MemberDto member = memberRepository.select(userId, password);
 
-
-        return false;
+        return member != null;
     }
 
 

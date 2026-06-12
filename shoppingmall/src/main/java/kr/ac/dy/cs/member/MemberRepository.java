@@ -2,6 +2,7 @@ package kr.ac.dy.cs.member;
 
 
 import kr.ac.dy.cs.util.Connector;
+import kr.ac.dy.cs.util.Encryption;
 import kr.ac.dy.cs.util.FileConnector;
 import kr.ac.dy.cs.util.H2DbConnector;
 
@@ -24,10 +25,12 @@ public class MemberRepository {
         Connector connector = new H2DbConnector();
         Connection connection = connector.getConnection();
 
+        password = Encryption.SHA256(password);
+
         String sql = """ 
         
         select id, name, email, password 
-        from member 
+        from member_safe 
         where id = ? and password = ? 
         
         """;
@@ -71,13 +74,13 @@ public class MemberRepository {
             Connector connector = new H2DbConnector();
             Connection connection = connector.getConnection();
 
-            String sql = " insert into member (id, name, email, password, reg_date) values (?, ?, ?, ?, now()) ";
+            String sql = " insert into member_safe (id, name, email, password, reg_date) values (?, ?, ?, ?, now()) ";
             //스테이트먼트 객체 생성
             PreparedStatement psmt = connection.prepareStatement(sql);
             psmt.setString(1, member.getUserId());
             psmt.setString(2, member.getUserName());
             psmt.setString(3, member.getEmail());
-            psmt.setString(4, member.getPassword());
+            psmt.setString(4, Encryption.SHA256(member.getPassword()));
             //실행
             affected = psmt.executeUpdate();
 

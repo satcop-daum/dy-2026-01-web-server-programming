@@ -1,4 +1,6 @@
 <%@ page import="kr.ac.dy.cs.util.CookieUtils" %>
+<%@ page import="kr.ac.dy.cs.member.MemberRegisterForm" %>
+<%@ page import="kr.ac.dy.cs.member.MemberService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,12 +12,10 @@
     String password = request.getParameter("password");
     String saveIdYn = request.getParameter("saveIdYn");
 
-    //로그인성공 -> admin, 12345
-    boolean loginYn = false;
-    if ("admin".equals(loginId) && "12345".equals(password)) {
-        loginYn = true;
-        //response.sendRedirect("index.jsp");
+    MemberService memberService = new MemberService();
+    boolean loginYn = memberService.isLogin(loginId, password);
 
+    if (loginYn) {
         session.setAttribute("loginId", loginId);
     }
 
