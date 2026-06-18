@@ -3,7 +3,6 @@ package kr.ac.dy.cs.util;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class H2DbConnector implements Connector, FileConnector {
@@ -15,26 +14,22 @@ public class H2DbConnector implements Connector, FileConnector {
     @Override
     public Connection getConnection() {
 
-        Connection connection = null;
-
         try {
-            //드라이버 로드
+            // H2 드라이버 로드
             Class.forName("org.h2.Driver");
 
-            String url = "jdbc:h2:C:\\Work\\shoppingmall\\db\\shopingmall";
-            url = "jdbc:h2:/Users/park/sources/dongyang/dy-2026-01-web-server-programming/db/shopingmall";
-            url = "jdbc:h2:C:\\Users\\214\\Documents\\dy-2026-01-web-server-programming\\db\\shopingmall";
+            // DB 경로
+            String url = "jdbc:h2:C:\\Users\\214\\Desktop\\shoppingmall-backoffice\\db\\shopingmall";
+
             String dbUser = "sa";
             String dbPassword = "";
 
-            //커넥션 객체 생성
-            connection = DriverManager.getConnection(url, dbUser, dbPassword);
+            return DriverManager.getConnection(url, dbUser, dbPassword);
+
         } catch (Exception e) {
-            e.printStackTrace();
 
+            throw new RuntimeException("H2 DB 연결 실패", e);
         }
-
-        return connection;
     }
 
     @Override

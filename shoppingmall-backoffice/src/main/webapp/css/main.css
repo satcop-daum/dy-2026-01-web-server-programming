@@ -1995,3 +1995,96 @@ body.dashboard-page {
     }
     .kpi-grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+ * 상품 관리 전용 스타일 (기존 테마 연동)
+ * ========================================================= */
+.admin-content {
+    padding: 60px 0;
+}
+.admin-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(17,24,39,0.05);
+    border: 1px solid #e5e7eb;
+    padding: 32px;
+    margin-top: 24px;
+}
+.admin-title-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+.admin-title-area h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #111827;
+    letter-spacing: -0.5px;
+}
+
+/* 관리자용 데이터 테이블 */
+.admin-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+.admin-data-table th {
+    background: #f9fafb;
+    color: #4b5563;
+    font-weight: 700;
+    padding: 14px 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+.admin-data-table td {
+    padding: 16px;
+    border-bottom: 1px solid #edf2f7;
+    color: #1f2937;
+    vertical-align: middle;
+}
+.admin-data-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* 상태 배지 스타일 */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 30px;
+}
+.status-badge.active { background: #ecfdf5; color: #10b981; }  /* 판매중 */
+.status-badge.warn { background: #fff7ed; color: #f97316; }    /* 재고부족 */
+.status-badge.danger { background: #fef2f2; color: #ef4444; }  /* 품절 */
+
+/* 작업 버튼들 */
+.btn-action-delete {
+    padding: 6px 12px;
+    background: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-action-delete:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* 상품 등록 폼 전용 스타일 */
+.admin-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-actions-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}

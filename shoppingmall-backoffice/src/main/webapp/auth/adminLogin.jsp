@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     if (SessionUtils.isLoginYn(session)) {
-        response.sendRedirect("/dashboard/index.jsp");
+        response.sendRedirect("./dashboard/index.jsp");
         return;
     }
 
@@ -26,18 +26,21 @@
 
     boolean hasError = "1".equals(request.getParameter("error"));
 %>
+<%
+String ctx = request.getContextPath(); // 프로젝트 컨텍스트 경로
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>관리자 로그인 - SHOPMALL ADMIN</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="<%= ctx %>/css/main.css">
 </head>
 <body class="login-page admin-login-page">
 
 <!-- 좌측 브랜드 패널 -->
 <aside class="brand-panel admin-brand-panel">
-    <a href="/index.jsp" class="top-logo">SHOP<span>MALL</span> ADMIN</a>
+    <a href="<%= ctx %>/index.jsp" class="top-logo">SHOP<span>MALL</span> ADMIN</a>
 
     <div class="lead">
         <div class="admin-badge">
@@ -136,7 +139,7 @@
     </div>
 
     <div class="signup-area admin-bottom-links">
-        <a href="/index.jsp">← 메인으로 돌아가기</a>
+        <a href="<%= ctx %>/index.jsp">← 메인으로 돌아가기</a>
         <span class="sep">|</span>
         <a href="mailto:admin@shopmall.example.com">시스템 담당자 문의</a>
     </div>

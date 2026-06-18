@@ -3,6 +3,7 @@
 <%@ page import="kr.ac.dy.cs.util.SessionUtils" %>
 <%
     boolean isLoggedIn = SessionUtils.isLoginYn(session);
+    String ctx = request.getContextPath(); // 프로젝트 컨텍스트 경로
 %>
 
 <!DOCTYPE html>
@@ -10,22 +11,22 @@
 <head>
     <meta charset="UTF-8">
     <title>SHOPMALL ADMIN - 쇼핑몰 관리자 시스템</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="<%= ctx %>/css/main.css">
 </head>
 <body class="admin-landing">
 
 <!-- ===== 상단 헤더 ===== -->
 <header class="admin-header">
     <div class="container header-inner">
-        <a href="/index.jsp" class="logo">SHOP<span>MALL</span> ADMIN</a>
+        <a href="<%= ctx %>/index.jsp" class="logo">SHOP<span>MALL</span> ADMIN</a>
         <nav class="admin-nav">
             <a href="#about">소개</a>
             <a href="#features">주요 기능</a>
             <a href="#login-guide">로그인 안내</a>
             <% if (isLoggedIn) { %>
-                <a href="/dashboard/index.jsp" class="btn-header-login">대시보드</a>
+            <a href="<%= ctx %>/dashboard/index.jsp" class="btn-header-login">대시보드</a>
             <% } else { %>
-                <a href="/auth/adminLogin.jsp" class="btn-header-login">로그인</a>
+            <a href="<%= ctx %>/auth/adminLogin.jsp" class="btn-header-login">로그인</a>
             <% } %>
         </nav>
     </div>
@@ -43,9 +44,9 @@
             </p>
             <div class="hero-actions">
                 <% if (isLoggedIn) { %>
-                    <a href="/dashboard/index.jsp" class="btn-primary">대시보드로 이동 →</a>
+                <a href="<%= ctx %>/dashboard/index.jsp" class="btn-primary">대시보드로 이동 →</a>
                 <% } else { %>
-                    <a href="/auth/adminLogin.jsp" class="btn-primary">관리자 로그인</a>
+                <a href="<%= ctx %>/auth/adminLogin.jsp" class="btn-primary">관리자 로그인</a>
                 <% } %>
                 <a href="#login-guide" class="btn-secondary">로그인 절차 안내</a>
             </div>
@@ -214,9 +215,9 @@
             <h3>지금 바로 시작하세요</h3>
             <p>관리자 계정으로 로그인하시면 모든 기능을 이용하실 수 있습니다.</p>
             <% if (isLoggedIn) { %>
-                <a href="/dashboard/index.jsp" class="btn-primary large">대시보드로 이동 →</a>
+                <a href="<%= ctx %>/dashboard/index.jsp" class="btn-primary large">대시보드로 이동 →</a>
             <% } else { %>
-                <a href="/auth/adminLogin.jsp" class="btn-primary large">관리자 로그인 →</a>
+                <a href="<%= ctx %>/auth/adminLogin.jsp" class="btn-primary large">관리자 로그인 →</a>
             <% } %>
         </div>
     </div>
@@ -241,8 +242,8 @@
         <div>
             <h4>계정</h4>
             <ul>
-                <li><a href="/auth/adminLogin.jsp">관리자 로그인</a></li>
-                <li><a href="/adminUser/register.jsp">관리자 등록</a></li>
+                <li><a href="<%= ctx %>/auth/adminLogin.jsp">관리자 로그인</a></li>
+                <li><a href="<%= ctx %>/adminUser/register.jsp">관리자 등록</a></li>
             </ul>
         </div>
         <div>

@@ -6,7 +6,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%
     if (!SessionUtils.isLoginYn(session)) {
         response.sendRedirect("/auth/adminLogin.jsp");
         return;
@@ -25,28 +25,26 @@
 
     DateTimeFormatter regDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 %>
-<!-- 회원 상새 정보 관리하는 탭으로 가는 버튼 추가 -->
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>회원 관리 - SHOPMALL ADMIN</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body class="dashboard-page">
 
 <!-- ===== 좌측 사이드바 ===== -->
 <aside class="dash-sidebar">
     <div class="dash-logo">
-        <a href="/dashboard/index.jsp">SHOP<span>MALL</span></a>
+        <a href="./dashboard/index.jsp">SHOP<span>MALL</span></a>
         <div class="dash-logo-sub">ADMIN CONSOLE</div>
     </div>
 
     <nav class="dash-nav">
         <div class="nav-group">
             <div class="nav-group-title">MAIN</div>
-            <a href="/dashboard/index.jsp" class="nav-item">
+            <a href="./dashboard/index.jsp" class="nav-item">
                 <span class="nav-icon">▦</span> 대시보드
             </a>
         </div>
@@ -55,8 +53,7 @@
             <div class="nav-group-title">운영</div>
             <a href="#" class="nav-item"><span class="nav-icon">📦</span> 상품 관리</a>
             <a href="#" class="nav-item"><span class="nav-icon">🛒</span> 주문 관리</a>
-            <a href="/member/list.jsp" class="nav-item active"><span class="nav-icon">👥</span> 회원 관리</a>
-            <a href="/notice/list.jsp" class="nav-item"><span class="nav-icon">📢</span> 공지사항 관리</a>
+            <a href="./member/list.jsp" class="nav-item active"><span class="nav-icon">👥</span> 회원 관리</a>
             <a href="#" class="nav-item"><span class="nav-icon">🎁</span> 프로모션</a>
         </div>
 
@@ -68,7 +65,7 @@
 
         <div class="nav-group">
             <div class="nav-group-title">시스템</div>
-            <a href="/adminUser/register.jsp" class="nav-item"><span class="nav-icon">⚙</span> 관리자 등록</a>
+            <a href="./adminUser/register.jsp" class="nav-item"><span class="nav-icon">⚙</span> 관리자 등록</a>
             <a href="#" class="nav-item"><span class="nav-icon">🔧</span> 시스템 설정</a>
         </div>
     </nav>
@@ -94,7 +91,7 @@
                 <span class="dash-user-meta">최근 로그인: <%= loginAtStr %></span>
             </div>
             <div class="dash-user-avatar"><%= loginId.substring(0, 1).toUpperCase() %></div>
-            <a href="/auth/adminLogout.jsp" class="dash-logout">로그아웃</a>
+            <a href="./auth/adminLogout.jsp" class="dash-logout">로그아웃</a>
         </div>
     </header>
 
@@ -112,7 +109,6 @@
                         <th>이메일</th>
                         <th>비밀번호</th>
                         <th>가입일시</th>
-                        <th>관리</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,9 +126,6 @@
                         <td><%= m.getEmail() %></td>
                         <td><%= m.getPassword() %></td>
                         <td><%= m.getRegDate() != null ? m.getRegDate().format(regDateFormatter) : "-" %></td>
-                        <td>
-                            <a href="view.jsp?id=<%= m.getUserId() %>">상세보기</a>
-                        </td>
                     </tr>
                     <% } %>
                 <% } %>

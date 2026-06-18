@@ -1,6 +1,10 @@
 <%@ page import="kr.ac.dy.cs.util.CookieUtils" %>
 <%@ page import="kr.ac.dy.cs.adminUser.AdminUserService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String ctx = request.getContextPath(); // 프로젝트 컨텍스트 경로
+%>
 <%
     String loginId = request.getParameter("loginId");
     String password = request.getParameter("password");
@@ -20,8 +24,8 @@
     }
 
     if (loginYn) {
-        response.sendRedirect("/dashboard/index.jsp");
+        response.sendRedirect(ctx + "/dashboard/index.jsp");
     } else {
-        response.sendRedirect("/auth/adminLogin.jsp?error=1");
+        response.sendRedirect(ctx + "/auth/adminLogin.jsp?error=1");
     }
 %>
