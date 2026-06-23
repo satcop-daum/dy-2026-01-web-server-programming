@@ -16,16 +16,11 @@ public class MemberService {
      * 로그인 처리
      */
     public boolean isLogin(String userId, String password) {
-main
-        MemberDto member = memberRepository.select(userId, password);
-        return member != null;
-
         if (userId == null || userId.isBlank() || password == null || password.isBlank()) {
             return false;
         }
 
         return memberRepository.select(userId, password) != null;
-main
     }
 
     /**
