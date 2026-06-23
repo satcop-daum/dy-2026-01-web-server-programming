@@ -45,7 +45,11 @@
 <head>
     <meta charset="UTF-8">
     <title>주문서 작성 - SHOPMALL</title>
+ main
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/main.css">
+
     <link rel="stylesheet" href="<%= contextPath %>/css/main.css">
+main
 </head>
 <body data-context-path="<%= contextPath %>">
 

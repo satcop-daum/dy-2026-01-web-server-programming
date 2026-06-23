@@ -27,6 +27,16 @@ public class H2DbConnector implements Connector, FileConnector {
         }
     }
 
+ main
+            String url = "jdbc:h2:C:/Work/shoppingmall/db/shoppingmall";
+            String dbUser = "sa";
+            String dbPassword = "";
+
+            connection = DriverManager.getConnection(url, dbUser, dbPassword);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
     private String resolveDbUrl() {
         String configuredPath = System.getProperty("shopmall.db.path");
         if (configuredPath == null || configuredPath.isBlank()) {
@@ -48,6 +58,7 @@ public class H2DbConnector implements Connector, FileConnector {
             if (parent != null && Files.exists(parent)) {
                 return toH2Url(candidate);
             }
+ main
         }
 
         return toH2Url(candidates[0]);

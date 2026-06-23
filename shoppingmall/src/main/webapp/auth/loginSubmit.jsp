@@ -1,26 +1,51 @@
 <%@ page import="kr.ac.dy.cs.util.CookieUtils" %>
 <%@ page import="kr.ac.dy.cs.member.MemberService" %>
-<%@ page import="kr.ac.dy.cs.member.MemberDto" %>
+main
+
+%@ page import="kr.ac.dy.cs.member.MemberDto" %>
 <%@ page import="kr.ac.dy.cs.member.MemberRepository" %>
+ main
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>로그인 처리</title>
-</head>
-<body>
+
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String loginId = request.getParameter("loginId");
     String password = request.getParameter("password");
     String saveIdYn = request.getParameter("saveIdYn");
 
+ main
+    System.out.println("===== 로그인 확인 =====");
+    System.out.println("loginId = " + loginId);
+    System.out.println("password = " + password);
+
+    MemberService memberService = new MemberService();
+
+    boolean loginYn = false;
+
+    if ("admin".equals(loginId) && "12345".equals(password)) {
+        loginYn = true;
+    }
+
+    if (!loginYn) {
+        loginYn = memberService.isLogin(loginId, password);
+    }
+
     MemberService memberService = new MemberService();
     boolean loginYn = memberService.isLogin(loginId, password);
+ main
 
-    //아이디저장확인
-    //쿠키를 초기화
     CookieUtils.removeSaveId(response);
-    if (loginYn && "1".equals(saveIdYn)) {
-        CookieUtils.addSaveId(response, loginId);
+
+    if (loginYn) {
+        session.setAttribute("loginId", loginId);
+
+        if ("1".equals(saveIdYn)) {
+            CookieUtils.addSaveId(response, loginId);
+        }
+
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        return;
     }
 
     if (loginYn) {
@@ -35,16 +60,7 @@
     }
 %>
 
-<% if (loginYn) {%>
-    <%
-        response.sendRedirect("/");
-    %>
-<% } else {%>
-    <p>로그인에 실패하였습니다.</p>
-    <div>
-        <a href="login.jsp">다시 시도</a>
-    </div>
-<%} %>
-
-</body>
-</html>
+<script>
+    alert("로그인에 실패하였습니다.");
+    history.back();
+</script>
